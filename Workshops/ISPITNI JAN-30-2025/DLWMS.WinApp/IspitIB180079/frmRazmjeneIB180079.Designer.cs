@@ -241,6 +241,7 @@
             btnPotvrda.TabIndex = 6;
             btnPotvrda.Text = "Potvrda";
             btnPotvrda.UseVisualStyleBackColor = true;
+            btnPotvrda.Click += btnPotvrda_Click;
             // 
             // groupBox1
             // 

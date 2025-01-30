@@ -11,7 +11,20 @@
   </xs:annotation>
   <xs:element name="dsDLWMS" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="dsDLWMS" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="dsDLWMS">
     <xs:complexType>
-      <xs:choice minOccurs="0" maxOccurs="unbounded" />
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="dsRazmjene" msprop:Generator_RowEvHandlerName="dsRazmjeneRowChangeEventHandler" msprop:Generator_RowDeletedName="dsRazmjeneRowDeleted" msprop:Generator_RowDeletingName="dsRazmjeneRowDeleting" msprop:Generator_RowEvArgName="dsRazmjeneRowChangeEvent" msprop:Generator_TablePropName="dsRazmjene" msprop:Generator_RowChangedName="dsRazmjeneRowChanged" msprop:Generator_RowChangingName="dsRazmjeneRowChanging" msprop:Generator_TableClassName="dsRazmjeneDataTable" msprop:Generator_RowClassName="dsRazmjeneRow" msprop:Generator_TableVarName="tabledsRazmjene" msprop:Generator_UserTableName="dsRazmjene">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Rb" msprop:Generator_ColumnPropNameInRow="Rb" msprop:Generator_ColumnPropNameInTable="RbColumn" msprop:Generator_ColumnVarNameInTable="columnRb" msprop:Generator_UserColumnName="Rb" type="xs:string" minOccurs="0" />
+              <xs:element name="Univerzitet" msprop:Generator_ColumnPropNameInRow="Univerzitet" msprop:Generator_ColumnPropNameInTable="UniverzitetColumn" msprop:Generator_ColumnVarNameInTable="columnUniverzitet" msprop:Generator_UserColumnName="Univerzitet" type="xs:string" minOccurs="0" />
+              <xs:element name="Pocetak" msprop:Generator_ColumnPropNameInRow="Pocetak" msprop:Generator_ColumnPropNameInTable="PocetakColumn" msprop:Generator_ColumnVarNameInTable="columnPocetak" msprop:Generator_UserColumnName="Pocetak" type="xs:string" minOccurs="0" />
+              <xs:element name="Kraj" msprop:Generator_ColumnPropNameInRow="Kraj" msprop:Generator_ColumnPropNameInTable="KrajColumn" msprop:Generator_ColumnVarNameInTable="columnKraj" msprop:Generator_UserColumnName="Kraj" type="xs:string" minOccurs="0" />
+              <xs:element name="ECTS" msprop:Generator_ColumnPropNameInRow="ECTS" msprop:Generator_ColumnPropNameInTable="ECTSColumn" msprop:Generator_ColumnVarNameInTable="columnECTS" msprop:Generator_UserColumnName="ECTS" type="xs:string" minOccurs="0" />
+              <xs:element name="Okoncano" msprop:Generator_ColumnPropNameInRow="Okoncano" msprop:Generator_ColumnPropNameInTable="OkoncanoColumn" msprop:Generator_ColumnVarNameInTable="columnOkoncano" msprop:Generator_UserColumnName="Okoncano" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
     </xs:complexType>
   </xs:element>
 </xs:schema>

@@ -2,6 +2,7 @@
 using DLWMS.Data.IspitIB180079;
 using DLWMS.Infrastructure;
 using DLWMS.WinApp.Helpers;
+using DLWMS.WinApp.Izvjestaji;
 using DocumentFormat.OpenXml.Office2010.Excel.Drawing;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -194,7 +195,7 @@ namespace DLWMS.WinApp.IspitIB180079
 
                 };
 
-                info += $"{i+1}. razmjena za {odabraniStudent} na {odabraniUniverzitet} ({novaRazmjena.DatumPocetak.ToString("dd.MM.yyyy")} - {novaRazmjena.DatumPocetak.ToString("dd.MM.yyyy")}){Environment.NewLine}";
+                info += $"{i + 1}. razmjena za {odabraniStudent} na {odabraniUniverzitet} ({novaRazmjena.DatumPocetak.ToString("dd.MM.yyyy")} - {novaRazmjena.DatumPocetak.ToString("dd.MM.yyyy")}){Environment.NewLine}";
 
                 db.RazmjeneIB180079.Add(novaRazmjena);
                 db.SaveChanges();
@@ -218,6 +219,13 @@ namespace DLWMS.WinApp.IspitIB180079
             return Validator.ProvjeriUnos(txtBroj, err, Kljucevi.RequiredField)
                 &&
                 Validator.ProvjeriUnos(txtECTSMultithreading, err, Kljucevi.RequiredField);
+        }
+
+        private void btnPotvrda_Click(object sender, EventArgs e)
+        {
+            var frmIzvjestaj = new frmIzvjestaji(odabraniStudent);
+
+            frmIzvjestaj.ShowDialog();
         }
     }
 }
