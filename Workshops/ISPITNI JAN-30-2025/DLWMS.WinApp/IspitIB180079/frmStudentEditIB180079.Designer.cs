@@ -48,7 +48,7 @@
             // 
             pbSlika.Location = new Point(12, 12);
             pbSlika.Name = "pbSlika";
-            pbSlika.Size = new Size(328, 307);
+            pbSlika.Size = new Size(347, 307);
             pbSlika.SizeMode = PictureBoxSizeMode.StretchImage;
             pbSlika.TabIndex = 0;
             pbSlika.TabStop = false;
@@ -57,7 +57,7 @@
             // 
             btnUcitajSliku.Location = new Point(12, 336);
             btnUcitajSliku.Name = "btnUcitajSliku";
-            btnUcitajSliku.Size = new Size(328, 29);
+            btnUcitajSliku.Size = new Size(347, 29);
             btnUcitajSliku.TabIndex = 1;
             btnUcitajSliku.Text = "Učitaj sliku";
             btnUcitajSliku.UseVisualStyleBackColor = true;
@@ -67,7 +67,7 @@
             // 
             lblImePrezime.AutoSize = true;
             lblImePrezime.Font = new Font("Segoe UI", 25F);
-            lblImePrezime.Location = new Point(362, 23);
+            lblImePrezime.Location = new Point(381, 22);
             lblImePrezime.Name = "lblImePrezime";
             lblImePrezime.Size = new Size(485, 57);
             lblImePrezime.TabIndex = 2;
@@ -76,7 +76,7 @@
             // lblIndeks
             // 
             lblIndeks.Font = new Font("Segoe UI", 25F);
-            lblIndeks.Location = new Point(362, 86);
+            lblIndeks.Location = new Point(381, 85);
             lblIndeks.Name = "lblIndeks";
             lblIndeks.Size = new Size(477, 57);
             lblIndeks.TabIndex = 2;
@@ -85,7 +85,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(362, 184);
+            label1.Location = new Point(381, 183);
             label1.Name = "label1";
             label1.Size = new Size(58, 20);
             label1.TabIndex = 3;
@@ -94,7 +94,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(362, 239);
+            label2.Location = new Point(381, 237);
             label2.Name = "label2";
             label2.Size = new Size(44, 20);
             label2.TabIndex = 3;
@@ -104,7 +104,7 @@
             // 
             cbDrzava.DropDownStyle = ComboBoxStyle.DropDownList;
             cbDrzava.FormattingEnabled = true;
-            cbDrzava.Location = new Point(428, 181);
+            cbDrzava.Location = new Point(447, 180);
             cbDrzava.Name = "cbDrzava";
             cbDrzava.Size = new Size(402, 28);
             cbDrzava.TabIndex = 4;
@@ -114,14 +114,14 @@
             // 
             cbGrad.DropDownStyle = ComboBoxStyle.DropDownList;
             cbGrad.FormattingEnabled = true;
-            cbGrad.Location = new Point(428, 235);
+            cbGrad.Location = new Point(447, 234);
             cbGrad.Name = "cbGrad";
             cbGrad.Size = new Size(402, 28);
             cbGrad.TabIndex = 4;
             // 
             // btnSacuvaj
             // 
-            btnSacuvaj.Location = new Point(688, 315);
+            btnSacuvaj.Location = new Point(707, 314);
             btnSacuvaj.Name = "btnSacuvaj";
             btnSacuvaj.Size = new Size(142, 29);
             btnSacuvaj.TabIndex = 5;
@@ -141,7 +141,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(851, 377);
+            ClientSize = new Size(873, 377);
             Controls.Add(btnSacuvaj);
             Controls.Add(cbGrad);
             Controls.Add(cbDrzava);
