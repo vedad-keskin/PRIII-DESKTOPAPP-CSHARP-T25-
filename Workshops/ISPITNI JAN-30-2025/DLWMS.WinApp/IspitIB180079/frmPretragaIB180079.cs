@@ -77,5 +77,38 @@ namespace DLWMS.WinApp.IspitIB180079
         {
             UcitajStudente();
         }
+
+        private void dgvStudenti_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var odabraniStudent = studenti[e.RowIndex];
+
+            if (e.ColumnIndex == 4)
+            {
+
+                odabraniStudent.Aktivan = !odabraniStudent.Aktivan;
+
+                db.Studenti.Update(odabraniStudent);
+                db.SaveChanges();
+
+                UcitajStudente();
+
+            }
+        }
+
+        private void dgvStudenti_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var odabraniStudent = studenti[e.RowIndex];
+
+            if(e.ColumnIndex != 5)
+            {
+                var frmStudentEdit = new frmStudentEditIB180079(odabraniStudent);
+
+                if(frmStudentEdit.ShowDialog() == DialogResult.OK)
+                {
+                    UcitajStudente();
+                    MessageBox.Show($"Student {odabraniStudent} uređen.", "Informacija", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+        }
     }
 }

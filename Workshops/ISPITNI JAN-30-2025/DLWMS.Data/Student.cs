@@ -18,5 +18,10 @@
 
         public string DrzavaInfo => Grad.Drzava.Naziv ?? "N/A";
         public string StudentInfo => $"({BrojIndeksa}) {Ime} {Prezime}" ?? "N/A";
+
+        public override string ToString()
+        {
+            return $"{Ime} {Prezime}";
+        }
     }
 }
