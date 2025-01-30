@@ -93,6 +93,12 @@ namespace DLWMS.WinApp.IspitIB180079
                 UcitajStudente();
 
             }
+            else if(e.ColumnIndex == 5)
+            {
+                var frmRazmjena = new frmRazmjeneIB180079(odabraniStudent);
+
+                frmRazmjena.ShowDialog();
+            }
         }
 
         private void dgvStudenti_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
