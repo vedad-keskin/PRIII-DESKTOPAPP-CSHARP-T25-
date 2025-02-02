@@ -852,7 +852,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>=Globals!PageNumber</Value>
+                      <Value>=Globals!OverallPageNumber</Value>
                       <Style />
                     </TextRun>
                     <TextRun>
@@ -871,9 +871,9 @@
               </Paragraphs>
               <rd:DefaultName>PageNumber</rd:DefaultName>
               <Top>0.29006cm</Top>
-              <Left>8.8552cm</Left>
+              <Left>5.36787cm</Left>
               <Height>0.6cm</Height>
-              <Width>7.72817cm</Width>
+              <Width>11.2155cm</Width>
               <Style>
                 <Border>
                   <Style>None</Style>

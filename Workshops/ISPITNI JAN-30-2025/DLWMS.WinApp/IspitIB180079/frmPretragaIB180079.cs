@@ -105,7 +105,7 @@ namespace DLWMS.WinApp.IspitIB180079
         {
             var odabraniStudent = studenti[e.RowIndex];
 
-            if(e.ColumnIndex != 5)
+            if(e.ColumnIndex < 4)
             {
                 var frmStudentEdit = new frmStudentEditIB180079(odabraniStudent);
 

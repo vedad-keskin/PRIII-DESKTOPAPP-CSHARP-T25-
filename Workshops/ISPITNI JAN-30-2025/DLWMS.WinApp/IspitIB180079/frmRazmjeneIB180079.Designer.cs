@@ -41,12 +41,6 @@
             dtpKraj = new DateTimePicker();
             btnSacuvaj = new Button();
             dgvRazmjene = new DataGridView();
-            Univerzitet = new DataGridViewTextBoxColumn();
-            DatumPocetak = new DataGridViewTextBoxColumn();
-            DatumKraj = new DataGridViewTextBoxColumn();
-            ECTS = new DataGridViewTextBoxColumn();
-            Okoncana = new DataGridViewCheckBoxColumn();
-            Obrisi = new DataGridViewButtonColumn();
             err = new ErrorProvider(components);
             btnPotvrda = new Button();
             groupBox1 = new GroupBox();
@@ -59,6 +53,12 @@
             label8 = new Label();
             label7 = new Label();
             label6 = new Label();
+            Univerzitet = new DataGridViewTextBoxColumn();
+            DatumPocetak = new DataGridViewTextBoxColumn();
+            DatumKraj = new DataGridViewTextBoxColumn();
+            ECTS = new DataGridViewTextBoxColumn();
+            Okoncana = new DataGridViewCheckBoxColumn();
+            Obrisi = new DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)dgvRazmjene).BeginInit();
             ((System.ComponentModel.ISupportInitialize)err).BeginInit();
             groupBox1.SuspendLayout();
@@ -174,61 +174,6 @@
             dgvRazmjene.TabIndex = 5;
             dgvRazmjene.CellContentClick += dgvRazmjene_CellContentClick;
             // 
-            // Univerzitet
-            // 
-            Univerzitet.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            Univerzitet.DataPropertyName = "Univerzitet";
-            Univerzitet.HeaderText = "Univerzitet";
-            Univerzitet.MinimumWidth = 6;
-            Univerzitet.Name = "Univerzitet";
-            Univerzitet.ReadOnly = true;
-            // 
-            // DatumPocetak
-            // 
-            DatumPocetak.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            DatumPocetak.DataPropertyName = "DatumPocetak";
-            DatumPocetak.HeaderText = "Početak";
-            DatumPocetak.MinimumWidth = 6;
-            DatumPocetak.Name = "DatumPocetak";
-            DatumPocetak.ReadOnly = true;
-            // 
-            // DatumKraj
-            // 
-            DatumKraj.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            DatumKraj.DataPropertyName = "DatumKraj";
-            DatumKraj.HeaderText = "Kraj";
-            DatumKraj.MinimumWidth = 6;
-            DatumKraj.Name = "DatumKraj";
-            DatumKraj.ReadOnly = true;
-            // 
-            // ECTS
-            // 
-            ECTS.DataPropertyName = "ECTS";
-            ECTS.HeaderText = "ECTS";
-            ECTS.MinimumWidth = 6;
-            ECTS.Name = "ECTS";
-            ECTS.ReadOnly = true;
-            ECTS.Width = 125;
-            // 
-            // Okoncana
-            // 
-            Okoncana.DataPropertyName = "Okoncana";
-            Okoncana.HeaderText = "Okončana";
-            Okoncana.MinimumWidth = 6;
-            Okoncana.Name = "Okoncana";
-            Okoncana.ReadOnly = true;
-            Okoncana.Width = 125;
-            // 
-            // Obrisi
-            // 
-            Obrisi.HeaderText = "";
-            Obrisi.MinimumWidth = 6;
-            Obrisi.Name = "Obrisi";
-            Obrisi.ReadOnly = true;
-            Obrisi.Text = "Obriši";
-            Obrisi.UseColumnTextForButtonValue = true;
-            Obrisi.Width = 125;
-            // 
             // err
             // 
             err.ContainerControl = this;
@@ -337,6 +282,61 @@
             label6.TabIndex = 0;
             label6.Text = "Broj razmjena:";
             // 
+            // Univerzitet
+            // 
+            Univerzitet.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Univerzitet.DataPropertyName = "Univerzitet";
+            Univerzitet.HeaderText = "Univerzitet";
+            Univerzitet.MinimumWidth = 6;
+            Univerzitet.Name = "Univerzitet";
+            Univerzitet.ReadOnly = true;
+            // 
+            // DatumPocetak
+            // 
+            DatumPocetak.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            DatumPocetak.DataPropertyName = "DatumPocetak";
+            DatumPocetak.HeaderText = "Početak";
+            DatumPocetak.MinimumWidth = 6;
+            DatumPocetak.Name = "DatumPocetak";
+            DatumPocetak.ReadOnly = true;
+            // 
+            // DatumKraj
+            // 
+            DatumKraj.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            DatumKraj.DataPropertyName = "DatumKraj";
+            DatumKraj.HeaderText = "Kraj";
+            DatumKraj.MinimumWidth = 6;
+            DatumKraj.Name = "DatumKraj";
+            DatumKraj.ReadOnly = true;
+            // 
+            // ECTS
+            // 
+            ECTS.DataPropertyName = "ECTS";
+            ECTS.HeaderText = "ECTS";
+            ECTS.MinimumWidth = 6;
+            ECTS.Name = "ECTS";
+            ECTS.ReadOnly = true;
+            ECTS.Width = 125;
+            // 
+            // Okoncana
+            // 
+            Okoncana.DataPropertyName = "Okoncana";
+            Okoncana.HeaderText = "Okončana";
+            Okoncana.MinimumWidth = 6;
+            Okoncana.Name = "Okoncana";
+            Okoncana.ReadOnly = true;
+            Okoncana.Width = 125;
+            // 
+            // Obrisi
+            // 
+            Obrisi.HeaderText = "";
+            Obrisi.MinimumWidth = 6;
+            Obrisi.Name = "Obrisi";
+            Obrisi.ReadOnly = true;
+            Obrisi.Text = "Obriši";
+            Obrisi.UseColumnTextForButtonValue = true;
+            Obrisi.Width = 125;
+            // 
             // frmRazmjeneIB180079
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -381,12 +381,6 @@
         private DateTimePicker dtpKraj;
         private Button btnSacuvaj;
         private DataGridView dgvRazmjene;
-        private DataGridViewTextBoxColumn Univerzitet;
-        private DataGridViewTextBoxColumn DatumPocetak;
-        private DataGridViewTextBoxColumn DatumKraj;
-        private DataGridViewTextBoxColumn ECTS;
-        private DataGridViewCheckBoxColumn Okoncana;
-        private DataGridViewButtonColumn Obrisi;
         private ErrorProvider err;
         private GroupBox groupBox1;
         private Button btnGenerisi;
@@ -399,5 +393,11 @@
         private Button btnPotvrda;
         private TextBox txtInfo;
         private Label label9;
+        private DataGridViewTextBoxColumn Univerzitet;
+        private DataGridViewTextBoxColumn DatumPocetak;
+        private DataGridViewTextBoxColumn DatumKraj;
+        private DataGridViewTextBoxColumn ECTS;
+        private DataGridViewCheckBoxColumn Okoncana;
+        private DataGridViewButtonColumn Obrisi;
     }
 }

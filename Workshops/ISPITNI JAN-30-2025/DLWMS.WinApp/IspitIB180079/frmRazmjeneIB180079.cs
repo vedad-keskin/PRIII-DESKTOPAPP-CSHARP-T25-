@@ -38,7 +38,8 @@ namespace DLWMS.WinApp.IspitIB180079
                 .Where(x => x.DrzavaId == odabranaDrzava.Id)
                 .ToList();
 
-            UcitajRazmjene();
+            cbUniverzitet.DisplayMember = "Naziv";
+            
         }
 
         private void UcitajRazmjene()
@@ -48,7 +49,6 @@ namespace DLWMS.WinApp.IspitIB180079
                 .Include(x => x.Univerzitet!.Drzava)
                 .Include(x => x.Student)
                 .Where(x => x.StudentId == odabraniStudent.Id)
-                .Where(x => x.Univerzitet!.DrzavaId == odabranaDrzava!.Id)
                 .ToList();
 
             if (razmjene != null)
@@ -69,9 +69,13 @@ namespace DLWMS.WinApp.IspitIB180079
 
             cbDrzava.DataSource = db.Drzave.ToList();
 
+            UcitajRazmjene();
+
 
             // ucitavanje univerziteta za mutlithreading
             cbUniverzitetMultithreading.DataSource = db.UniverzitetiIB180079.ToList();
+
+            cbUniverzitetMultithreading.DisplayMember = "Naziv";
 
         }
 
@@ -161,6 +165,12 @@ namespace DLWMS.WinApp.IspitIB180079
                 await Task.Run(() => GenerisiRazmjene(odabraniUniverzitet));
 
 
+                // Thread način
+
+                //Thread thread = new Thread(() => GenerisiRazmjene(odabraniUniverzitet));
+                //thread.Start();
+
+
             }
         }
 
@@ -173,15 +183,15 @@ namespace DLWMS.WinApp.IspitIB180079
 
             var ects = int.Parse(txtECTSMultithreading.Text);
 
-            var datumPocetak = new DateTime(2025, 1, 1);
-            var datumKraj = datumPocetak.AddDays(ects);
-
-            var okoncana = datumKraj > DateTime.Now ? false : true;
+            var datumPocetak = new DateTime(2025, 1, 1 ,12 ,0 ,0);
 
             for (int i = 0; i < broj; i++)
             {
                 Thread.Sleep(300);
 
+                var datumKraj = datumPocetak.AddDays(ects + (i + 1));
+
+                var okoncana = datumKraj > DateTime.Now ? false : true;
 
                 var novaRazmjena = new RazmjeneIB180079()
                 {

@@ -13,6 +13,7 @@ namespace DLWMS.Data.IspitIB180079
         public int DrzavaId { get; set; }
         public Drzava? Drzava { get; set; }
 
+
         public override string ToString()
         {
             return $"{Naziv} ({Drzava})";
