@@ -40,7 +40,7 @@ namespace DLWMS.WinApp.IspitIB180079
 
             var imePrezime = txtImePrezime.Text.ToLower();
 
-            var studenti = db.Studenti
+            studenti = db.Studenti
                 .Where(x => x.SpolId == spol.Id)
                 .Where(x => x.GradId == grad.Id)
                 .Where(x => x.DatumRodjenja >= datumOd && x.DatumRodjenja <= datumDo)
@@ -59,6 +59,8 @@ namespace DLWMS.WinApp.IspitIB180079
                 dgvStudenti.DataSource = studenti;
 
             }
+
+            // zakomentarisano radi bržeg testiranja
 
             //if(studenti.Count() == 0)
             //{
@@ -110,7 +112,7 @@ namespace DLWMS.WinApp.IspitIB180079
         private void dgvStudenti_CellClick(object sender, DataGridViewCellEventArgs e)
         {
 
-            var odabraniStudent = dgvStudenti.SelectedRows[0].DataBoundItem as Student;
+            var odabraniStudent = studenti[e.RowIndex];
 
             if (e.ColumnIndex != 6)
             {
