@@ -92,7 +92,7 @@ namespace DLWMS.WinApp.IspitIB180079
                 var datumPocetak = dtpPocetak.Value;
                 var datumKraj = dtpKraj.Value;
 
-                var okoncana = dtpKraj.Value > DateTime.Now ? false : true;
+                var okoncana = datumKraj > DateTime.Now ? false : true;
 
                 if (datumPocetak > datumKraj)
                 {
@@ -197,7 +197,7 @@ namespace DLWMS.WinApp.IspitIB180079
                 {
 
                     StudentId = odabraniStudent.Id,
-                    UniverzitetId = odabraniUniverzitet.Id,
+                    UniverzitetId = odabraniUniverzitet!.Id,
                     DatumPocetak = datumPocetak,
                     DatumKraj = datumKraj,
                     Okoncana = okoncana,

@@ -56,13 +56,14 @@ namespace DLWMS.WinApp.IspitIB180079
             if (Validiraj())
             {
 
+
                 var odabraniGrad = cbGrad.SelectedItem as Grad;
 
                 var slika = pbSlika.Image.ToByteArray();
 
                 odabraniStudent.Slika = slika;
-                odabraniStudent.GradId = odabraniStudent.Id;
-                odabraniStudent.Grad = odabraniGrad!;
+                odabraniStudent.GradId = odabraniGrad.Id;
+                odabraniStudent.Grad = odabraniGrad;
 
                 db.Studenti.Update(odabraniStudent);
                 db.SaveChanges();

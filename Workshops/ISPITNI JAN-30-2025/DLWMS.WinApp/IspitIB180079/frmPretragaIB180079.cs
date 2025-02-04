@@ -64,6 +64,13 @@ namespace DLWMS.WinApp.IspitIB180079
         private void frmPretragaIB180079_Load(object sender, EventArgs e)
         {
             dgvStudenti.AutoGenerateColumns = false;
+
+            UcitajComboBox();
+
+        }
+
+        private void UcitajComboBox()
+        {
             cbDrzava.DataSource = db.Drzave.ToList();
             cbSpol.DataSource = db.Spolovi.ToList();
         }
