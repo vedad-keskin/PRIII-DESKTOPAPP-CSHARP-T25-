@@ -40,8 +40,27 @@ namespace DLWMS.WinApp.IspitIB180079
             lblImePrezime.Text = $"{odabraniStudent.Ime} {odabraniStudent.Prezime}";
             lblIndeks.Text = odabraniStudent.BrojIndeksa;
 
-        }
+            // Selektovanje drzave i grada iz studenta
 
+            cbDrzava.SelectedIndex = odabraniStudent.Grad.DrzavaId - 1;
+
+
+
+            // Set the selected city
+            cbGrad.SelectedIndex = db.Gradovi.Where(x => x.DrzavaId == odabraniStudent.Grad.DrzavaId).ToList().FindIndex(x => x.Id == odabraniStudent.GradId);
+
+            //for (int i = 0; i < gradoviDrzave.Count(); i++)
+            //{
+
+            //    if (odabraniStudent.GradId == gradoviDrzave[i].Id)
+            //    {
+            //        cbGrad.SelectedIndex = i;
+            //    }
+
+            //}
+
+
+        }
         private void cbDrzava_SelectedIndexChanged(object sender, EventArgs e)
         {
             var odabranaDrzava = cbDrzava.SelectedItem as Drzava;
