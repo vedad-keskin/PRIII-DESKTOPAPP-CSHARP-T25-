@@ -42,22 +42,17 @@ namespace DLWMS.WinApp.IspitIB180079
 
             // Selektovanje drzave i grada iz studenta
 
-            cbDrzava.SelectedIndex = odabraniStudent.Grad.DrzavaId - 1;
+            // Postavljanje drzave 
+            cbDrzava.SelectedIndex = db.Drzave.ToList().FindIndex(x => x.Id == odabraniStudent.Grad.DrzavaId);
 
+            // Uzimanje svih gradova te drzave
+            var gradoviDrzave = db.Gradovi
+                .Where(x => x.DrzavaId == odabraniStudent.Grad.DrzavaId)
+                .ToList();
 
+            // Setovanje grada na grad od studenta
+            cbGrad.SelectedIndex = gradoviDrzave.FindIndex(x => x.Id == odabraniStudent.GradId);
 
-            // Set the selected city
-            cbGrad.SelectedIndex = db.Gradovi.Where(x => x.DrzavaId == odabraniStudent.Grad.DrzavaId).ToList().FindIndex(x => x.Id == odabraniStudent.GradId);
-
-            //for (int i = 0; i < gradoviDrzave.Count(); i++)
-            //{
-
-            //    if (odabraniStudent.GradId == gradoviDrzave[i].Id)
-            //    {
-            //        cbGrad.SelectedIndex = i;
-            //    }
-
-            //}
 
 
         }
