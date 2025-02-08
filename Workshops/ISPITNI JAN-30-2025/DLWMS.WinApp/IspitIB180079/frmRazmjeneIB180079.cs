@@ -35,7 +35,7 @@ namespace DLWMS.WinApp.IspitIB180079
             odabranaDrzava = cbDrzava.SelectedItem as Drzava;
 
             cbUniverzitet.DataSource = db.UniverzitetiIB180079
-                .Where(x => x.DrzavaId == odabranaDrzava.Id)
+                .Where(x => x.DrzavaId == odabranaDrzava!.Id)
                 .ToList();
 
             cbUniverzitet.DisplayMember = "Naziv";
@@ -111,7 +111,7 @@ namespace DLWMS.WinApp.IspitIB180079
                     var novaRazmjena = new RazmjeneIB180079()
                     {
                         StudentId = odabraniStudent.Id,
-                        UniverzitetId = univerzitet.Id,
+                        UniverzitetId = univerzitet!.Id,
                         DatumPocetak = datumPocetak,
                         DatumKraj = datumKraj,
                         ECTS = ects,

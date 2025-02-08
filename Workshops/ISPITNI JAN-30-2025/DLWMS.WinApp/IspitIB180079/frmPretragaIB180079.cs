@@ -36,9 +36,9 @@ namespace DLWMS.WinApp.IspitIB180079
             var imePrezime = txtImePrezime.Text.ToLower();
 
             studenti = db.Studenti
-                .Include(x => x.Grad.Drzava)
+                .Include(x => x.Grad!.Drzava)
                 .Include(x => x.Spol)
-                .Where(x => x.Grad.DrzavaId == drzava.Id)
+                .Where(x => x.Grad!.DrzavaId == drzava.Id)
                 .Where(x => x.SpolId == spol.Id)
                 .Where(x => x.Ime.ToLower().Contains(imePrezime) || x.Prezime.ToLower().Contains(imePrezime))
                 .ToList();

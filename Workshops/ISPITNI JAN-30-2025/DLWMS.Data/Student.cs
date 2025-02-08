@@ -10,13 +10,13 @@
         public string BrojIndeksa { get; set; }
         public string Lozinka { get; set; }
         public int GradId { get; set; }
-        public Grad Grad { get; set; }
+        public Grad? Grad { get; set; }
         public int SpolId { get; set; }
-        public Spol Spol { get; set; }
+        public Spol? Spol { get; set; }
         public byte[] Slika { get; set; }
         public bool Aktivan { get; set; }
 
-        public string DrzavaInfo => Grad.Drzava.Naziv ?? "N/A";
+        public string DrzavaInfo => Grad?.Drzava?.Naziv ?? "N/A";
         public string StudentInfo => $"({BrojIndeksa}) {Ime} {Prezime}" ?? "N/A";
 
         public override string ToString()

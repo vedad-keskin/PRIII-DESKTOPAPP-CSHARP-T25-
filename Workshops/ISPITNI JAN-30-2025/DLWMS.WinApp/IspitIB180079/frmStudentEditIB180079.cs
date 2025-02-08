@@ -43,14 +43,14 @@ namespace DLWMS.WinApp.IspitIB180079
             // Selektovanje drzave i grada iz studenta
 
             // Postavljanje drzave 
-            cbDrzava.SelectedIndex = db.Drzave.ToList().FindIndex(x => x.Id == odabraniStudent.Grad.DrzavaId);
+            cbDrzava.SelectedIndex = db.Drzave.ToList().FindIndex(x => x.Id == odabraniStudent.Grad!.DrzavaId);
 
             // Malo optimizovanije jer se ne mora praviti novi call na bazu ali komplikovanije 
             //cbDrzava.SelectedIndex = cbDrzava.Items.Cast<Drzava>().ToList().FindIndex(x => x.Id == odabraniStudent.Grad.DrzavaId);
 
             // Uzimanje svih gradova te drzave
             var gradoviDrzave = db.Gradovi
-                .Where(x => x.DrzavaId == odabraniStudent.Grad.DrzavaId)
+                .Where(x => x.DrzavaId == odabraniStudent.Grad!.DrzavaId)
                 .ToList();
 
             // Setovanje grada na grad od studenta
@@ -64,7 +64,7 @@ namespace DLWMS.WinApp.IspitIB180079
             var odabranaDrzava = cbDrzava.SelectedItem as Drzava;
 
             cbGrad.DataSource = db.Gradovi
-                .Where(x => x.DrzavaId == odabranaDrzava.Id)
+                .Where(x => x.DrzavaId == odabranaDrzava!.Id)
                 .ToList();
         }
 
@@ -79,7 +79,7 @@ namespace DLWMS.WinApp.IspitIB180079
                 var slika = pbSlika.Image.ToByteArray();
 
                 odabraniStudent.Slika = slika;
-                odabraniStudent.GradId = odabraniGrad.Id;
+                odabraniStudent.GradId = odabraniGrad!.Id;
                 odabraniStudent.Grad = odabraniGrad;
 
                 db.Studenti.Update(odabraniStudent);
