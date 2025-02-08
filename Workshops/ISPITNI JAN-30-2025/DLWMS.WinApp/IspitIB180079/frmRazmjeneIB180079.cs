@@ -87,7 +87,8 @@ namespace DLWMS.WinApp.IspitIB180079
 
                 var univerzitet = cbUniverzitet.SelectedItem as UniverzitetiIB180079;
 
-                var ects = int.Parse(txtECTS.Text);
+                //int ects = int.Parse(txtECTS.Text); 
+                int ects = int.TryParse(txtECTS.Text, out var result) ? result : 1; // hendlanje unosa slova.. 
 
                 var datumPocetak = dtpPocetak.Value;
                 var datumKraj = dtpKraj.Value;
@@ -177,11 +178,14 @@ namespace DLWMS.WinApp.IspitIB180079
         private void GenerisiRazmjene(UniverzitetiIB180079? odabraniUniverzitet)
         {
 
-            var broj = int.Parse(txtBroj.Text);
+
+            //int broj = int.Parse(txtBroj.Text);
+            int broj = int.TryParse(txtBroj.Text, out var result1) ? result1 : 1;
 
             var info = "";
 
-            var ects = int.Parse(txtECTSMultithreading.Text);
+            //int ects = int.Parse(txtECTSMultithreading.Text);
+            int ects = int.TryParse(txtECTSMultithreading.Text, out var result2) ? result2 : 1;
 
             var datumPocetak = new DateTime(2025, 1, 1 ,12 ,0 ,0);
 
