@@ -57,24 +57,28 @@ namespace DLWMS.WinApp.IspitIB180079
                 .ToList();
 
 
-            for (int i = 0; i < studentiStipendije.Count(); i++)
-            {
+            // NotMapped način
 
-                if (DateTime.Now.Year == int.Parse(studentiStipendije[i].StipendijaGodina.Godina))
-                {
-                    studentiStipendije[i].Ukupno = studentiStipendije[i].StipendijaGodina.Iznos * DateTime.Now.Month;
-                }
-                else
-                {
-                    studentiStipendije[i].Ukupno = studentiStipendije[i].StipendijaGodina.Iznos * 12;
-                }
+            //for (int i = 0; i < studentiStipendije.Count(); i++)
+            //{
+
+            //    if (DateTime.Now.Year == int.Parse(studentiStipendije[i].StipendijaGodina.Godina))
+            //    {
+            //        studentiStipendije[i].Ukupno = studentiStipendije[i].StipendijaGodina.Iznos * DateTime.Now.Month;
+            //    }
+            //    else
+            //    {
+            //        studentiStipendije[i].Ukupno = studentiStipendije[i].StipendijaGodina.Iznos * 12;
+            //    }
 
 
-                // Skraceno ali nepregledno
+            //    // Skraceno ali nepregledno
 
-                //studentiStipendije[i].Ukupno = DateTime.Now.Year == int.Parse(studentiStipendije[i].StipendijaGodina.Godina) ? studentiStipendije[i].StipendijaGodina.Iznos * DateTime.Now.Month : studentiStipendije[i].StipendijaGodina.Iznos * 12;
+            //    //studentiStipendije[i].Ukupno = DateTime.Now.Year == int.Parse(studentiStipendije[i].StipendijaGodina.Godina) ? studentiStipendije[i].StipendijaGodina.Iznos * DateTime.Now.Month : studentiStipendije[i].StipendijaGodina.Iznos * 12;
 
-            }
+            //}
+
+            this.Text = $"Broj prikazanih studenata {studentiStipendije.Count()}";
 
 
             if (studentiStipendije != null)
@@ -143,13 +147,25 @@ namespace DLWMS.WinApp.IspitIB180079
 
         private void btnDodajStipendiju_Click(object sender, EventArgs e)
         {
-    
+
             var frmAddStipendija = new frmStipendijaAddEditIB180079();
 
             if (frmAddStipendija.ShowDialog() == DialogResult.OK)
             {
                 UcitajStudentiStipendije();
             }
+        }
+
+        private void btnStipendijePoGodinama_Click(object sender, EventArgs e)
+        {
+
+            var frmStipendije = new frmStipendijeIB180079();
+
+            if(frmStipendije.ShowDialog() == DialogResult.OK)
+            {
+                UcitajStudentiStipendije();
+            }
+
         }
     }
 }

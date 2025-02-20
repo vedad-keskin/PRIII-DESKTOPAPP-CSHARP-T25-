@@ -123,6 +123,7 @@
             Controls.Add(label2);
             Controls.Add(label1);
             Name = "frmStipendijaAddEditIB180079";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Dodjela stipendije";
             Load += frmStipendijaAddEditIB180079_Load;
             ((System.ComponentModel.ISupportInitialize)err).EndInit();

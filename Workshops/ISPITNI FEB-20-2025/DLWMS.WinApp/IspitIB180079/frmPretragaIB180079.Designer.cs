@@ -101,6 +101,7 @@
             btnStipendijePoGodinama.TabIndex = 2;
             btnStipendijePoGodinama.Text = "Stipendije po godinama";
             btnStipendijePoGodinama.UseVisualStyleBackColor = true;
+            btnStipendijePoGodinama.Click += btnStipendijePoGodinama_Click;
             // 
             // dgvStudentiStipendije
             // 
@@ -186,6 +187,7 @@
             Controls.Add(label2);
             Controls.Add(label1);
             Name = "frmPretragaIB180079";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Broj prikazanih studenata placeholder";
             Load += frmPretragaIB180079_Load;
             ((System.ComponentModel.ISupportInitialize)dgvStudentiStipendije).EndInit();

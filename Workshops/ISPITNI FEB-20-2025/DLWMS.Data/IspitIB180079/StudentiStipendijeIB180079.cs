@@ -26,12 +26,12 @@ namespace DLWMS.Data.IspitIB180079
 
         // Skraceni ali nepregledan način 
 
-        //public int Ukupno => DateTime.Now.Year == int.Parse(StipendijaGodina.Godina) ? StipendijaGodina.Iznos * DateTime.Now.Month : StipendijaGodina.Iznos * 12;
+        public int Ukupno => StipendijaGodina?.Ukupno ?? 0;
 
         // Vjerovatno najlaški način za uraditi 
 
-        [NotMapped]
-        public int Ukupno { get; set; }
+        //[NotMapped]
+        //public int Ukupno { get; set; }
 
     }
 }
