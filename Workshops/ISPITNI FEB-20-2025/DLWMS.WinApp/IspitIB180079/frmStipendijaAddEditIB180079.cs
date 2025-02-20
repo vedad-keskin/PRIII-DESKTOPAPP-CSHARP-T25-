@@ -1,6 +1,7 @@
 ﻿using DLWMS.Data;
 using DLWMS.Data.IspitIB180079;
 using DLWMS.Infrastructure;
+using DLWMS.WinApp.Helpers;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -74,55 +75,59 @@ namespace DLWMS.WinApp.IspitIB180079
 
         private void btnSacuvaj_Click(object sender, EventArgs e)
         {
-            var student = cbStudent.SelectedItem as Student;
-            var stipendijaGodina = cbStipendijaGodina.SelectedItem as StipendijeGodineIB180079;
 
-            // Provjera da student već nema stipendiju u odabranoj godini
-            if (db.StudentiStipendijeIB180079.ToList().Exists(x => x.StipendijaGodina.Godina == stipendijaGodina.Godina && x.StudentId == student.Id))
-            {
-                MessageBox.Show($"Student {student} već ima stipendiju u {stipendijaGodina.Godina} godini.", "Upozorenje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-               
-            }
-            // Edit
-            else if (odabranaStudentStipendija != null)
+            if (Validiraj())
             {
 
-                odabranaStudentStipendija.StipendijaGodinaId = stipendijaGodina.Id;
-                odabranaStudentStipendija.StipendijaGodina = stipendijaGodina;
+                var student = cbStudent.SelectedItem as Student;
+                var stipendijaGodina = cbStipendijaGodina.SelectedItem as StipendijeGodineIB180079;
 
-                odabranaStudentStipendija.StudentId = student.Id;
-                odabranaStudentStipendija.Student = student;
-
-                db.StudentiStipendijeIB180079.Update(odabranaStudentStipendija);
-                db.SaveChanges();
-
-                DialogResult = DialogResult.OK;
-
-            }
-            // Add
-            else
-            {
-
-                var novaStudentStipendija = new StudentiStipendijeIB180079()
+                // Provjera da student već nema stipendiju u odabranoj godini
+                if (db.StudentiStipendijeIB180079.ToList().Exists(x => x.StipendijaGodina.Godina == stipendijaGodina.Godina && x.StudentId == student.Id))
                 {
-                    StudentId = student.Id,
-                    StipendijaGodinaId = stipendijaGodina.Id
-                };
+                    MessageBox.Show($"Student {student} već ima stipendiju u {stipendijaGodina.Godina} godini.", "Upozorenje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+               
+                }
+                // Edit
+                else if (odabranaStudentStipendija != null)
+                {
 
-                db.StudentiStipendijeIB180079.Add(novaStudentStipendija);
-                db.SaveChanges();
+                    odabranaStudentStipendija.StipendijaGodinaId = stipendijaGodina.Id;
+                    odabranaStudentStipendija.StipendijaGodina = stipendijaGodina;
 
-                DialogResult = DialogResult.OK;
+                    odabranaStudentStipendija.StudentId = student.Id;
+                    odabranaStudentStipendija.Student = student;
 
+                    db.StudentiStipendijeIB180079.Update(odabranaStudentStipendija);
+                    db.SaveChanges();
+
+                    DialogResult = DialogResult.OK;
+
+                }
+                // Add
+                else
+                {
+
+                    var novaStudentStipendija = new StudentiStipendijeIB180079()
+                    {
+                        StudentId = student.Id,
+                        StipendijaGodinaId = stipendijaGodina.Id
+                    };
+
+                    db.StudentiStipendijeIB180079.Add(novaStudentStipendija);
+                    db.SaveChanges();
+
+                    DialogResult = DialogResult.OK;
+
+                }
             }
-
-            
 
         }
 
-
-
-
-     } 
+        private bool Validiraj()
+        {
+            return Validator.ProvjeriUnos(cbStipendijaGodina, err, Kljucevi.RequiredField);
+        }
+    } 
     
 }

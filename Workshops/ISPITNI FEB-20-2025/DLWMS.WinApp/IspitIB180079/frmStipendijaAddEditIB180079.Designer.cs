@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             label1 = new Label();
             label2 = new Label();
             label3 = new Label();
@@ -35,6 +36,8 @@
             cbGodina = new ComboBox();
             cbStipendijaGodina = new ComboBox();
             btnSacuvaj = new Button();
+            err = new ErrorProvider(components);
+            ((System.ComponentModel.ISupportInitialize)err).BeginInit();
             SuspendLayout();
             // 
             // label1
@@ -103,6 +106,10 @@
             btnSacuvaj.UseVisualStyleBackColor = true;
             btnSacuvaj.Click += btnSacuvaj_Click;
             // 
+            // err
+            // 
+            err.ContainerControl = this;
+            // 
             // frmStipendijaAddEditIB180079
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -118,6 +125,7 @@
             Name = "frmStipendijaAddEditIB180079";
             Text = "Dodjela stipendije";
             Load += frmStipendijaAddEditIB180079_Load;
+            ((System.ComponentModel.ISupportInitialize)err).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -131,5 +139,6 @@
         private ComboBox cbGodina;
         private ComboBox cbStipendijaGodina;
         private Button btnSacuvaj;
+        private ErrorProvider err;
     }
 }
