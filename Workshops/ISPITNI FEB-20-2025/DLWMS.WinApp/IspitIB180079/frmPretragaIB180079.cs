@@ -45,7 +45,7 @@ namespace DLWMS.WinApp.IspitIB180079
         private void UcitajStudentiStipendije()
         {
 
-            var godina = int.Parse(cbGodina.SelectedItem!.ToString());
+            var godina = cbGodina.SelectedItem!.ToString();
 
             var stipendija = cbStipendija.SelectedItem as StipendijeIB180079;
 
@@ -60,7 +60,7 @@ namespace DLWMS.WinApp.IspitIB180079
             for (int i = 0; i < studentiStipendije.Count(); i++)
             {
 
-                if (DateTime.Now.Year == studentiStipendije[i].StipendijaGodina.Godina)
+                if (DateTime.Now.Year == int.Parse(studentiStipendije[i].StipendijaGodina.Godina))
                 {
                     studentiStipendije[i].Ukupno = studentiStipendije[i].StipendijaGodina.Iznos * DateTime.Now.Month;
                 }
@@ -72,7 +72,7 @@ namespace DLWMS.WinApp.IspitIB180079
 
                 // Skraceno ali nepregledno
 
-                //studentiStipendije[i].Ukupno = DateTime.Now.Year == int.Parse(studentiStipendije[i].StipendijaGodina.Godina) ? studentiStipendije[i].StipendijaGodina.Iznos * DateTime.Now.Month : studentiStipendije[i].StipendijaGodina.Iznos * 12; 
+                //studentiStipendije[i].Ukupno = DateTime.Now.Year == int.Parse(studentiStipendije[i].StipendijaGodina.Godina) ? studentiStipendije[i].StipendijaGodina.Iznos * DateTime.Now.Month : studentiStipendije[i].StipendijaGodina.Iznos * 12;
 
             }
 
@@ -126,12 +126,12 @@ namespace DLWMS.WinApp.IspitIB180079
             var odabranaStudentStipendija = studentiStipendije[e.RowIndex];
 
 
-            if(e.ColumnIndex != 5)
+            if (e.ColumnIndex != 5)
             {
 
-                var frmAddEdit = new frmStipendijaAddEditIB180079(odabranaStudentStipendija);
+                var frmEditStipendija = new frmStipendijaAddEditIB180079(odabranaStudentStipendija);
 
-                if(frmAddEdit.ShowDialog() == DialogResult.OK)
+                if (frmEditStipendija.ShowDialog() == DialogResult.OK)
                 {
                     UcitajStudentiStipendije();
                 }
@@ -139,6 +139,17 @@ namespace DLWMS.WinApp.IspitIB180079
             }
 
 
+        }
+
+        private void btnDodajStipendiju_Click(object sender, EventArgs e)
+        {
+    
+            var frmAddStipendija = new frmStipendijaAddEditIB180079();
+
+            if (frmAddStipendija.ShowDialog() == DialogResult.OK)
+            {
+                UcitajStudentiStipendije();
+            }
         }
     }
 }

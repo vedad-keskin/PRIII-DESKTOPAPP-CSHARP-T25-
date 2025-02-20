@@ -33,7 +33,7 @@
             label3 = new Label();
             cbStudent = new ComboBox();
             cbGodina = new ComboBox();
-            cbStipendija = new ComboBox();
+            cbStipendijaGodina = new ComboBox();
             btnSacuvaj = new Button();
             SuspendLayout();
             // 
@@ -82,15 +82,16 @@
             cbGodina.Name = "cbGodina";
             cbGodina.Size = new Size(377, 28);
             cbGodina.TabIndex = 1;
+            cbGodina.SelectedIndexChanged += cbGodina_SelectedIndexChanged;
             // 
-            // cbStipendija
+            // cbStipendijaGodina
             // 
-            cbStipendija.DropDownStyle = ComboBoxStyle.DropDownList;
-            cbStipendija.FormattingEnabled = true;
-            cbStipendija.Location = new Point(129, 118);
-            cbStipendija.Name = "cbStipendija";
-            cbStipendija.Size = new Size(377, 28);
-            cbStipendija.TabIndex = 1;
+            cbStipendijaGodina.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbStipendijaGodina.FormattingEnabled = true;
+            cbStipendijaGodina.Location = new Point(129, 118);
+            cbStipendijaGodina.Name = "cbStipendijaGodina";
+            cbStipendijaGodina.Size = new Size(377, 28);
+            cbStipendijaGodina.TabIndex = 1;
             // 
             // btnSacuvaj
             // 
@@ -100,6 +101,7 @@
             btnSacuvaj.TabIndex = 2;
             btnSacuvaj.Text = "Sačuvaj";
             btnSacuvaj.UseVisualStyleBackColor = true;
+            btnSacuvaj.Click += btnSacuvaj_Click;
             // 
             // frmStipendijaAddEditIB180079
             // 
@@ -107,7 +109,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(526, 204);
             Controls.Add(btnSacuvaj);
-            Controls.Add(cbStipendija);
+            Controls.Add(cbStipendijaGodina);
             Controls.Add(cbGodina);
             Controls.Add(cbStudent);
             Controls.Add(label3);
@@ -127,7 +129,7 @@
         private Label label3;
         private ComboBox cbStudent;
         private ComboBox cbGodina;
-        private ComboBox cbStipendija;
+        private ComboBox cbStipendijaGodina;
         private Button btnSacuvaj;
     }
 }

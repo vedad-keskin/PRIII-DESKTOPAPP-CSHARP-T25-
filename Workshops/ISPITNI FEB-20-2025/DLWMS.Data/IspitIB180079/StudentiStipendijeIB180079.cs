@@ -16,7 +16,7 @@ namespace DLWMS.Data.IspitIB180079
         public int StipendijaGodinaId { get; set; }
         public StipendijeGodineIB180079 StipendijaGodina { get; set; }
 
-        public int GodinaInfo => StipendijaGodina?.Godina ?? 0;
+        public string GodinaInfo => StipendijaGodina?.Godina ?? "N/A";
         public string StipendijaInfo => StipendijaGodina?.Stipendija?.Naziv ?? "N/A";
         public int IznosInfo => StipendijaGodina?.Iznos ?? 0;
 
@@ -26,7 +26,7 @@ namespace DLWMS.Data.IspitIB180079
 
         // Skraceni ali nepregledan način 
 
-        //public int Ukupno => DateTime.Now.Year == StipendijaGodina.Godina ? StipendijaGodina.Iznos * DateTime.Now.Month : StipendijaGodina.Iznos * 12;
+        //public int Ukupno => DateTime.Now.Year == int.Parse(StipendijaGodina.Godina) ? StipendijaGodina.Iznos * DateTime.Now.Month : StipendijaGodina.Iznos * 12;
 
         // Vjerovatno najlaški način za uraditi 
 

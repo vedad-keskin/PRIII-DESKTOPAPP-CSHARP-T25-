@@ -91,6 +91,7 @@
             btnDodajStipendiju.TabIndex = 2;
             btnDodajStipendiju.Text = "Dodaj stipendiju";
             btnDodajStipendiju.UseVisualStyleBackColor = true;
+            btnDodajStipendiju.Click += btnDodajStipendiju_Click;
             // 
             // btnStipendijePoGodinama
             // 
