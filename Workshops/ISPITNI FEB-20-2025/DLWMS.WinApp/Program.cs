@@ -1,3 +1,5 @@
+using DLWMS.WinApp.IspitIB180079;
+
 namespace DLWMS.WinApp
 {
     internal static class Program
@@ -11,7 +13,7 @@ namespace DLWMS.WinApp
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            var startnaForma = new frmPocetna();
+            var startnaForma = new frmPretragaIB180079();
             Application.Run(startnaForma);
         }
     }

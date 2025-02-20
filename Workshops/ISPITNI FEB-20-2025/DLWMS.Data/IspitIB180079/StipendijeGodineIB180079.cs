@@ -11,7 +11,7 @@ namespace DLWMS.Data.IspitIB180079
         public int Id { get; set; }
         public int StipendijaId { get; set; }
         public StipendijeIB180079 Stipendija  { get; set; }
-        public string Godina { get; set; }
+        public int Godina { get; set; }
         public int Iznos { get; set; }
         public bool Aktivan { get; set; }
     }
