@@ -1,6 +1,7 @@
 ﻿using DLWMS.Data.IspitIB180079;
 using DLWMS.Infrastructure;
 using DLWMS.WinApp.Helpers;
+using DLWMS.WinApp.Izvjestaji;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -193,6 +194,17 @@ namespace DLWMS.WinApp.IspitIB180079
             db.SaveChanges();
 
             UcitajStipendijeGodine();
+
+        }
+
+        private void btnPotvrda_Click(object sender, EventArgs e)
+        {
+
+            var odabranaStipendijaGodina = dgvStipendijeGodine.SelectedRows[0].DataBoundItem as StipendijeGodineIB180079;
+
+            var frmIzvjestaj = new frmIzvjestaji(odabranaStipendijaGodina);
+            frmIzvjestaj.ShowDialog();  
+
 
         }
     }

@@ -11,7 +11,18 @@
   </xs:annotation>
   <xs:element name="dsDLWMS" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="dsDLWMS" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="dsDLWMS">
     <xs:complexType>
-      <xs:choice minOccurs="0" maxOccurs="unbounded" />
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="dsStipendije" msprop:Generator_RowEvHandlerName="dsStipendijeRowChangeEventHandler" msprop:Generator_RowDeletedName="dsStipendijeRowDeleted" msprop:Generator_RowDeletingName="dsStipendijeRowDeleting" msprop:Generator_RowEvArgName="dsStipendijeRowChangeEvent" msprop:Generator_TablePropName="dsStipendije" msprop:Generator_RowChangedName="dsStipendijeRowChanged" msprop:Generator_RowChangingName="dsStipendijeRowChanging" msprop:Generator_TableClassName="dsStipendijeDataTable" msprop:Generator_RowClassName="dsStipendijeRow" msprop:Generator_TableVarName="tabledsStipendije" msprop:Generator_UserTableName="dsStipendije">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Rb" msprop:Generator_ColumnPropNameInRow="Rb" msprop:Generator_ColumnPropNameInTable="RbColumn" msprop:Generator_ColumnVarNameInTable="columnRb" msprop:Generator_UserColumnName="Rb" type="xs:string" minOccurs="0" />
+              <xs:element name="BrojIndeksaImeIPrezime" msprop:Generator_ColumnPropNameInRow="BrojIndeksaImeIPrezime" msprop:Generator_ColumnPropNameInTable="BrojIndeksaImeIPrezimeColumn" msprop:Generator_ColumnVarNameInTable="columnBrojIndeksaImeIPrezime" msprop:Generator_UserColumnName="BrojIndeksaImeIPrezime" type="xs:string" minOccurs="0" />
+              <xs:element name="MjesecniIznos" msprop:Generator_ColumnPropNameInRow="MjesecniIznos" msprop:Generator_ColumnPropNameInTable="MjesecniIznosColumn" msprop:Generator_ColumnVarNameInTable="columnMjesecniIznos" msprop:Generator_UserColumnName="MjesecniIznos" type="xs:string" minOccurs="0" />
+              <xs:element name="UkupniIznos" msprop:Generator_ColumnPropNameInRow="UkupniIznos" msprop:Generator_ColumnPropNameInTable="UkupniIznosColumn" msprop:Generator_ColumnVarNameInTable="columnUkupniIznos" msprop:Generator_UserColumnName="UkupniIznos" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
     </xs:complexType>
   </xs:element>
 </xs:schema>
