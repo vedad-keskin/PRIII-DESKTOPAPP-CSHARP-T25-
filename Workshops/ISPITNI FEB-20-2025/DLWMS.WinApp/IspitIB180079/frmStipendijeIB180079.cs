@@ -68,9 +68,9 @@ namespace DLWMS.WinApp.IspitIB180079
                 //var iznos = int.Parse(txtIznos.Text);
                 var iznos = int.TryParse(txtIznos.Text, out var result) ? result : 0;
 
-                if(stipendijeGodine.Exists(x => x.Godina == godina && stipendija.Id == x.StipendijaId))
+                if (stipendijeGodine.Exists(x => x.Godina == godina && stipendija.Id == x.StipendijaId))
                 {
-                    MessageBox.Show($"Već postoji {stipendija} stipendija u {godina} godini.","Upozorenje",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+                    MessageBox.Show($"Već postoji {stipendija} stipendija u {godina} godini.", "Upozorenje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
                 else
                 {
@@ -97,6 +97,102 @@ namespace DLWMS.WinApp.IspitIB180079
         private bool Validiraj()
         {
             return Validator.ProvjeriUnos(txtIznos, err, Kljucevi.RequiredField);
+
+        }
+
+        private void frmStipendijeIB180079_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            DialogResult = DialogResult.OK;
+        }
+
+        private async void btnGenerisi_Click(object sender, EventArgs e)
+        {
+            // 1. dio
+            // -- validacija 
+            // -- thread ili async/await 
+            // -- sve vezano za combo box
+
+            var odabranaStipendijaGodina = dgvStipendijeGodine.SelectedRows[0].DataBoundItem as StipendijeGodineIB180079;
+
+            await Task.Run(() => GenerisiStipendije(odabranaStipendijaGodina));
+
+            //Thread thread = new Thread(() => GenerisiStipendije(odabranaStipendijaGodina));
+            //thread.Start();
+
+        }
+
+        private void GenerisiStipendije(StipendijeGodineIB180079? odabranaStipendijaGodina)
+        {
+            // 2. dio
+            // -- kalkulacije
+            // -- pohrane
+            // -- sleep
+
+            var sviStudenti = db.Studenti.ToList();
+
+            var info = "";
+
+            var redniBroj = 1;
+
+            for (int i = 0; i < sviStudenti.Count(); i++)
+            {
+
+                if (!db.StudentiStipendijeIB180079.ToList().Exists(x => x.StipendijaGodina.Godina == odabranaStipendijaGodina!.Godina && x.StudentId == sviStudenti[i].Id))
+                {
+
+                    var novaStudentiStipendija = new StudentiStipendijeIB180079()
+                    {
+                        StudentId = sviStudenti[i].Id,
+                        StipendijaGodinaId = odabranaStipendijaGodina!.Id
+                    };
+
+                    db.StudentiStipendijeIB180079.Add(novaStudentiStipendija);
+                    db.SaveChanges();
+
+                    info += $"{redniBroj}. {odabranaStipendijaGodina.Stipendija} stipendija u iznosu od {odabranaStipendijaGodina.Iznos} dodata {sviStudenti[i]}{Environment.NewLine}";
+
+                    redniBroj++;
+
+                }
+
+            }
+
+
+            Action action = () =>
+            {
+                // 3. dio
+                // -- ucitavanja
+                // -- ispisi
+                // -- mbox
+
+                if (redniBroj != 1)
+                {
+                    MessageBox.Show($"Uspješno su generisane stipendije", "Informacija", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                }
+                else
+                {
+                    MessageBox.Show($"Ne postoje stipendije koje zadovoljavaju uslove generisanja", "Informacija", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+
+                txtInfo.Text = info;
+
+            };
+            BeginInvoke(action);
+
+        }
+
+        private void dgvStipendijeGodine_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+            var odabranaStipendijaGodina = stipendijeGodine[e.RowIndex];
+
+            odabranaStipendijaGodina.Aktivan = !odabranaStipendijaGodina.Aktivan;
+
+            db.StipendijeGodineIB180079.Update(odabranaStipendijaGodina);
+            db.SaveChanges();
+
+            UcitajStipendijeGodine();
 
         }
     }

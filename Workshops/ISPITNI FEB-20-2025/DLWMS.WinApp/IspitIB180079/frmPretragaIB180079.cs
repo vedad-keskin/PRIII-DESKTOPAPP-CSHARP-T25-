@@ -45,9 +45,9 @@ namespace DLWMS.WinApp.IspitIB180079
         private void UcitajStudentiStipendije()
         {
 
-            var godina = cbGodina.SelectedItem!.ToString();
+            var godina = cbGodina.SelectedItem?.ToString() ?? string.Empty;
 
-            var stipendija = cbStipendija.SelectedItem as StipendijeIB180079;
+            var stipendija = cbStipendija.SelectedItem as StipendijeIB180079 ?? new StipendijeIB180079();
 
             studentiStipendije = db.StudentiStipendijeIB180079
                 .Include(x => x.Student)
@@ -88,10 +88,12 @@ namespace DLWMS.WinApp.IspitIB180079
                 dgvStudentiStipendije.DataSource = studentiStipendije;
 
 
-                if (studentiStipendije.Count() == 0)
-                {
-                    MessageBox.Show($"U bazi nisu evidentirani studenti kojima je u {godina}. godini dodijeljena {stipendija} stipendija,", "Upozorenje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
+                // Zakomentarisano radi bržeg testiranja
+
+                //if (studentiStipendije.Count() == 0)
+                //{
+                //    MessageBox.Show($"U bazi nisu evidentirani studenti kojima je u {godina}. godini dodijeljena {stipendija} stipendija,", "Upozorenje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                //}
 
             }
 
