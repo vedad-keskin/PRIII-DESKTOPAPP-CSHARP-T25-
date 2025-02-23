@@ -31,9 +31,9 @@ namespace DLWMS.WinApp.IspitIB180079
 
         private void UcitajComboBox()
         {
-            cbStipendija.DataSource = db.StipendijeIB180079.ToList();
-
             cbGodina.SelectedIndex = 0;
+
+            cbStipendija.DataSource = db.StipendijeIB180079.ToList();
 
         }
 
@@ -57,26 +57,7 @@ namespace DLWMS.WinApp.IspitIB180079
                 .ToList();
 
 
-            // NotMapped način
-
-            //for (int i = 0; i < studentiStipendije.Count(); i++)
-            //{
-
-            //    if (DateTime.Now.Year == int.Parse(studentiStipendije[i].StipendijaGodina.Godina))
-            //    {
-            //        studentiStipendije[i].Ukupno = studentiStipendije[i].StipendijaGodina.Iznos * DateTime.Now.Month;
-            //    }
-            //    else
-            //    {
-            //        studentiStipendije[i].Ukupno = studentiStipendije[i].StipendijaGodina.Iznos * 12;
-            //    }
-
-
-            //    // Skraceno ali nepregledno
-
-            //    //studentiStipendije[i].Ukupno = DateTime.Now.Year == int.Parse(studentiStipendije[i].StipendijaGodina.Godina) ? studentiStipendije[i].StipendijaGodina.Iznos * DateTime.Now.Month : studentiStipendije[i].StipendijaGodina.Iznos * 12;
-
-            //}
+            // moze i -> Text = $"Broj prikazanih studenata {studentiStipendije.Count()}";
 
             this.Text = $"Broj prikazanih studenata {studentiStipendije.Count()}";
 
