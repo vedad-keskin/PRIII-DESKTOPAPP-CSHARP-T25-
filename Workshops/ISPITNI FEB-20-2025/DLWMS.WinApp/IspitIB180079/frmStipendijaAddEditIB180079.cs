@@ -79,47 +79,62 @@ namespace DLWMS.WinApp.IspitIB180079
             if (Validiraj())
             {
 
-                var student = cbStudent.SelectedItem as Student ?? new Student();
-                var stipendijaGodina = cbStipendijaGodina.SelectedItem as StipendijeGodineIB180079 ?? new StipendijeGodineIB180079();
+                var student = cbStudent.SelectedItem as Student;
+                var stipendijaGodina = cbStipendijaGodina.SelectedItem as StipendijeGodineIB180079;
 
-                // Provjera da student već nema stipendiju u odabranoj godini
-                if (db.StudentiStipendijeIB180079.ToList().Exists(x => x.StipendijaGodina.Godina == stipendijaGodina.Godina && x.StudentId == student.Id))
-                {
-                    MessageBox.Show($"Student {student} već ima stipendiju u {stipendijaGodina.Godina} godini.", "Upozorenje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-               
-                }
-                // Edit
-                else if (odabranaStudentStipendija != null)
+                // ZA EDIT
+                if(odabranaStudentStipendija != null)
                 {
 
-                    odabranaStudentStipendija.StipendijaGodinaId = stipendijaGodina.Id;
-                    odabranaStudentStipendija.StipendijaGodina = stipendijaGodina;
-
-                    odabranaStudentStipendija.StudentId = student.Id;
-                    odabranaStudentStipendija.Student = student;
-
-                    db.StudentiStipendijeIB180079.Update(odabranaStudentStipendija);
-                    db.SaveChanges();
-
-                    DialogResult = DialogResult.OK;
-
-                }
-                // Add
-                else
-                {
-
-                    var novaStudentStipendija = new StudentiStipendijeIB180079()
+                    if(stipendijaGodina != odabranaStudentStipendija.StipendijaGodina)
                     {
-                        StudentId = student.Id,
-                        StipendijaGodinaId = stipendijaGodina.Id
-                    };
+                        MessageBox.Show($"Student {student} se ne može urediti stipendija na drugoj godini jer postoji mogućnost da već ima stipendije na toj godini.", "Upozorenje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    else
+                    {
 
-                    db.StudentiStipendijeIB180079.Add(novaStudentStipendija);
-                    db.SaveChanges();
+                        odabranaStudentStipendija.StipendijaGodinaId = stipendijaGodina.Id;
+                        odabranaStudentStipendija.StipendijaGodina = stipendijaGodina;
 
-                    DialogResult = DialogResult.OK;
+                        odabranaStudentStipendija.StudentId = student.Id;
+                        odabranaStudentStipendija.Student = student;
+
+                        db.StudentiStipendijeIB180079.Update(odabranaStudentStipendija);
+                        db.SaveChanges();
+
+                        DialogResult = DialogResult.OK;
+                    }
+
+
 
                 }
+                else // ZA ADD
+                {
+                    // Provjera da student već nema stipendiju u odabranoj godini
+                    if (db.StudentiStipendijeIB180079.Include(x => x.StipendijaGodina).ToList().Exists(x => x.StipendijaGodina.Godina == stipendijaGodina.Godina && x.StudentId == student.Id))
+                    {
+                        MessageBox.Show($"Student {student} već ima stipendiju u {stipendijaGodina.Godina} godini.", "Upozorenje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+                    }
+                    else
+                    {
+
+                        var novaStudentStipendija = new StudentiStipendijeIB180079()
+                        {
+                            StudentId = student.Id,
+                            StipendijaGodinaId = stipendijaGodina.Id
+                        };
+
+                        db.StudentiStipendijeIB180079.Add(novaStudentStipendija);
+                        db.SaveChanges();
+
+                        DialogResult = DialogResult.OK;
+                    }
+
+
+                }
+
+            
             }
 
         }
