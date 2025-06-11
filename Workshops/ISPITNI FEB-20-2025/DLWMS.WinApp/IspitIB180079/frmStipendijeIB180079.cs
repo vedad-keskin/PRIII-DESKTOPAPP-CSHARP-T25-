@@ -66,8 +66,8 @@ namespace DLWMS.WinApp.IspitIB180079
                 var stipendija = cbStipendija.SelectedItem as StipendijeIB180079;
 
                 // Kraći način
-                //var iznos = int.Parse(txtIznos.Text);
-                var iznos = int.TryParse(txtIznos.Text, out var result) ? result : 0;
+                var iznos = int.Parse(txtIznos.Text);
+                //var iznos = int.TryParse(txtIznos.Text, out var result) ? result : 0;
 
                 if (stipendijeGodine.Exists(x => x.Godina == godina && stipendija.Id == x.StipendijaId))
                 {
@@ -140,6 +140,7 @@ namespace DLWMS.WinApp.IspitIB180079
 
                 if (!db.StudentiStipendijeIB180079.ToList().Exists(x => x.StipendijaGodina.Godina == odabranaStipendijaGodina!.Godina && x.StudentId == sviStudenti[i].Id))
                 {
+                    Thread.Sleep(300);
 
                     var novaStudentiStipendija = new StudentiStipendijeIB180079()
                     {

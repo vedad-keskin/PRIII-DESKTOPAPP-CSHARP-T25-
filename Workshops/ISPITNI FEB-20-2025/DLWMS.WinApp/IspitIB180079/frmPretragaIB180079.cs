@@ -41,6 +41,10 @@ namespace DLWMS.WinApp.IspitIB180079
         {
             UcitajStudentiStipendije();
         }
+        private void cbStipendija_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            UcitajStudentiStipendije();
+        }
 
         private void UcitajStudentiStipendije()
         {
@@ -53,7 +57,7 @@ namespace DLWMS.WinApp.IspitIB180079
                 .Include(x => x.Student)
                 .Include(x => x.StipendijaGodina.Stipendija)
                 .Where(x => x.StipendijaGodina.Godina == godina)
-                .Where(x => x.StipendijaGodina.StipendijaId == stipendija!.Id)
+                .Where(x => x.StipendijaGodina.StipendijaId == stipendija.Id)
                 .ToList();
 
 
@@ -81,10 +85,6 @@ namespace DLWMS.WinApp.IspitIB180079
 
         }
 
-        private void cbStipendija_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            UcitajStudentiStipendije();
-        }
 
         private void dgvStudentiStipendije_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {

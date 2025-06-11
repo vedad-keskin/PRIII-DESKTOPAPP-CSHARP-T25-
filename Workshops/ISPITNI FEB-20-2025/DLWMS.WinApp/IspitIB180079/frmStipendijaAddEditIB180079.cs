@@ -79,8 +79,8 @@ namespace DLWMS.WinApp.IspitIB180079
             if (Validiraj())
             {
 
-                var student = cbStudent.SelectedItem as Student;
-                var stipendijaGodina = cbStipendijaGodina.SelectedItem as StipendijeGodineIB180079;
+                var student = cbStudent.SelectedItem as Student ?? new Student();
+                var stipendijaGodina = cbStipendijaGodina.SelectedItem as StipendijeGodineIB180079 ?? new StipendijeGodineIB180079();
 
                 // Provjera da student već nema stipendiju u odabranoj godini
                 if (db.StudentiStipendijeIB180079.ToList().Exists(x => x.StipendijaGodina.Godina == stipendijaGodina.Godina && x.StudentId == student.Id))
