@@ -52,6 +52,8 @@ namespace DLWMS.WinApp.IspitIB180079
 
                 cbGodina.SelectedItem = odabranaStudentStipendija.StipendijaGodina.Godina;
 
+                cbGodina.Enabled = false;
+
                 cbStipendijaGodina.SelectedIndex = db.StipendijeGodineIB180079.ToList().FindIndex(x => x.StipendijaId == odabranaStudentStipendija.StipendijaGodina.StipendijaId);
 
             }
@@ -86,27 +88,17 @@ namespace DLWMS.WinApp.IspitIB180079
                 if(odabranaStudentStipendija != null)
                 {
 
-                    if(stipendijaGodina != odabranaStudentStipendija.StipendijaGodina)
-                    {
-                        MessageBox.Show($"Student {student} se ne može urediti stipendija na drugoj godini jer postoji mogućnost da već ima stipendije na toj godini.", "Upozorenje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    }
-                    else
-                    {
+                     odabranaStudentStipendija.StipendijaGodinaId = stipendijaGodina.Id;
+                     odabranaStudentStipendija.StipendijaGodina = stipendijaGodina;
 
-                        odabranaStudentStipendija.StipendijaGodinaId = stipendijaGodina.Id;
-                        odabranaStudentStipendija.StipendijaGodina = stipendijaGodina;
+                     odabranaStudentStipendija.StudentId = student.Id;
+                     odabranaStudentStipendija.Student = student;
 
-                        odabranaStudentStipendija.StudentId = student.Id;
-                        odabranaStudentStipendija.Student = student;
+                     db.StudentiStipendijeIB180079.Update(odabranaStudentStipendija);
+                     db.SaveChanges();
 
-                        db.StudentiStipendijeIB180079.Update(odabranaStudentStipendija);
-                        db.SaveChanges();
-
-                        DialogResult = DialogResult.OK;
-                    }
-
-
-
+                     DialogResult = DialogResult.OK;
+             
                 }
                 else // ZA ADD
                 {
