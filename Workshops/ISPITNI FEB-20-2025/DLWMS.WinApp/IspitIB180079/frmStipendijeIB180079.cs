@@ -113,21 +113,22 @@ namespace DLWMS.WinApp.IspitIB180079
             // -- thread ili async/await 
             // -- sve vezano za combo box
 
-            var odabranaStipendijaGodina = dgvStipendijeGodine.SelectedRows[0].DataBoundItem as StipendijeGodineIB180079;
 
-            await Task.Run(() => GenerisiStipendije(odabranaStipendijaGodina));
+            await Task.Run(() => GenerisiStipendije());
 
             //Thread thread = new Thread(() => GenerisiStipendije(odabranaStipendijaGodina));
             //thread.Start();
 
         }
 
-        private void GenerisiStipendije(StipendijeGodineIB180079? odabranaStipendijaGodina)
+        private void GenerisiStipendije()
         {
             // 2. dio
             // -- kalkulacije
             // -- pohrane
             // -- sleep
+
+            var odabranaStipendijaGodina = dgvStipendijeGodine.SelectedRows[0].DataBoundItem as StipendijeGodineIB180079;
 
             var sviStudenti = db.Studenti.ToList();
 
