@@ -116,7 +116,7 @@ namespace DLWMS.WinApp.IspitIB180079
 
             await Task.Run(() => GenerisiStipendije());
 
-            //Thread thread = new Thread(() => GenerisiStipendije(odabranaStipendijaGodina));
+            //Thread thread = new Thread(() => GenerisiStipendije());
             //thread.Start();
 
         }
