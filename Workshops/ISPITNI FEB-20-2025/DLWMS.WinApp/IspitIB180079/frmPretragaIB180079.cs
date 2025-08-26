@@ -110,11 +110,11 @@ namespace DLWMS.WinApp.IspitIB180079
 
         private void dgvStudentiStipendije_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            var odabranaStudentStipendija = studentiStipendije[e.RowIndex];
 
 
             if (e.ColumnIndex != 5)
             {
+                var odabranaStudentStipendija = studentiStipendije[e.RowIndex];
 
                 var frmEditStipendija = new frmStipendijaAddEditIB180079(odabranaStudentStipendija);
 
