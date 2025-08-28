@@ -83,7 +83,7 @@ namespace DLWMS.WinApp.IspitIB180079
                 var student = cbStudent.SelectedItem as Student;
                 var stipendijaGodina = cbStipendijaGodina.SelectedItem as StipendijeGodineIB180079;
 
-          
+
                 if (db.StudentiStipendijeIB180079.ToList().Exists(x => x.StipendijaGodinaId == stipendijaGodina.Id && x.StudentId == student.Id))
                 {
                     MessageBox.Show($"Student {student} već ima stipendiju u {stipendijaGodina.Godina} godini.", "Upozorenje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -92,16 +92,14 @@ namespace DLWMS.WinApp.IspitIB180079
                 else if (odabranaStudentStipendija != null)
                 {
 
-                    var untrackanaStudentStipendija = db.StudentiStipendijeIB180079
-                        .First(x => x.Id == odabranaStudentStipendija.Id);
 
-                    untrackanaStudentStipendija.StudentId = student.Id;
-                    untrackanaStudentStipendija.StipendijaGodinaId = stipendijaGodina.Id;
+                    var untrackedStudentStipendija = db.StudentiStipendijeIB180079.First(x => x.Id == odabranaStudentStipendija.Id);
+
+                    untrackedStudentStipendija.StipendijaGodinaId = stipendijaGodina.Id;
 
 
-                    db.StudentiStipendijeIB180079.Update(untrackanaStudentStipendija);
-                   
-             
+                    db.StudentiStipendijeIB180079.Update(untrackedStudentStipendija);
+
                 }
                 else 
                 {
